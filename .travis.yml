@@ -9,7 +9,7 @@ python:
 
 # install dependencies depending on the particular OS
 install:
-  - sudo pip3 install PyInstaller
+  - sudo pip install PyInstaller
 
 # build & test scripts
 script:
