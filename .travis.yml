@@ -1,30 +1,20 @@
 # language target
 language: python
+os: linux
+dist: bionic
+sudo: required
+python:
+  - "3.7"
 
-# main build matrix
-matrix:
-  include:
-    - name: "Bionic Ubuntu Linux"
-      os: linux
-      dist: bionic
-      sudo: required
-      python:
-        - "3.7"
-
-# Showing the python3 & pip versions for debug
-before_install:
-  - echo "Getting python & pip version"
-  - python3 --version
-  - python3.7 --version
-  - pip3 --version
 
 # install dependencies depending on the particular OS
 install:
-  - sudo apt install python3.7 PyInstaller python3.7-pip pyqt5-sip sip tree
+  - sudo apt install python3-pip pyqt5-sip sip
+  - sudo python3.7 -m pip install PyInstaller
 
 # build & test scripts
 script:
-  - python3.7 -m pip install .
+  - sudo python3.7 -m pip install .
   - python3.7 -m PyInstaller nanovna-saver.py
   - cd dist && tree
   # mv skyflash-gui skyflash && gzip skyflash
