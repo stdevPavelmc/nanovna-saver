@@ -9,14 +9,13 @@ python:
 
 # install dependencies depending on the particular OS
 install:
-  - sudo apt install python3-pip pyqt5-sip sip
   - sudo python3.7 -m pip install PyInstaller
 
 # build & test scripts
 script:
   - sudo python3.7 -m pip install .
   - python3.7 -m PyInstaller nanovna-saver.py
-  - cd dist && tree
+  - cd dist && ls -lh
   # mv skyflash-gui skyflash && gzip skyflash
   # mv dist/skyflash.gz final/
     # ls -lh final/
