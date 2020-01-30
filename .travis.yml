@@ -19,7 +19,7 @@ before_install:
   - pip3 --version
 
 # install dependencies depending on the particular OS
-install: 
+install:
   - sudo apt install python3.7 PyInstaller python3.7-pip pyqt5-sip sip tree
 
 # build & test scripts
@@ -29,17 +29,17 @@ script:
   - cd dist && tree
   # mv skyflash-gui skyflash && gzip skyflash
   # mv dist/skyflash.gz final/
-	# ls -lh final/
+    # ls -lh final/
 
 # notifications (only via telegram)
 notifications:
   email: true
 
 # make the apps for each OS
-# before_deploy:
-#   - export VERSION="$(git describe --tags --exact-match HEAD 2> /dev/null)"
-#   - ./travis/before_deploy.sh ${TARGETOS} ${VERSION}
-#   - ls -l ./final/
+before_deploy:
+- export VERSION="$(git describe --tags --exact-match HEAD 2> /dev/null)"
+- ./travis/before_deploy.sh ${TARGETOS} ${VERSION}
+- ls -l ./final/
 
 # deploy to Github
 # deploy:
