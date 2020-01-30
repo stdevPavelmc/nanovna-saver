@@ -1,10 +1,13 @@
-os: linux
-dist: bionic
-sudo: required
-# explicit python as language: this force the use of virtual envs to use the right python version
-language: python
-python:
-  - "3.7"
+# build matrix
+matrix:
+  include:
+    - name: "bIONIC Linux with Python 3.7"
+      os: linux
+      dist: BIONIC
+      sudo: required
+      language: python
+      python:
+        - "3.7"
 
 # Showing the python3 & pip versions for debug
 before_install:
