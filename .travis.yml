@@ -13,7 +13,7 @@ install:
 
 # build & test scripts
 script:
-  - sudo pip3 install .
+  - sudo pip install .
   - PyInstaller nanovna-saver.py
   - cd dist && ls -lh
   # mv skyflash-gui skyflash && gzip skyflash
