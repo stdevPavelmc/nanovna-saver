@@ -1,9 +1,15 @@
-# build details
-os: linux
-dist: bionic
-sudo: required
+# language target
 language: python
-python: "3.7"
+
+# main build matrix
+matrix:
+  include:
+    - name: "Bionic Ubuntu Linux"
+      os: linux
+      dist: bionic
+      sudo: required
+      python:
+        - "3.7"
 
 # Showing the python3 & pip versions for debug
 before_install:
