@@ -1,0 +1,51 @@
+os: linux
+dist: bionic
+sudo: required
+# explicit python as language: this force the use of virtual envs to use the right python version
+language: python
+python:
+  - "3.7"
+
+# Showing the python3 & pip versions for debug
+before_install:
+  - echo "Getting python & pip version"
+  - python3 --version
+  - python3.7 --version
+  - pip3 --version
+
+# install dependencies depending on the particular OS
+install: 
+  - sudo apt install python3.7 PyInstaller python3.7-pip pyqt5-sip sip tree
+
+# build & test scripts
+script:
+  - python3.7 -m pip install .
+  - python3.7 -m PyInstaller nanovna-saver.py
+  - cd dist && tree
+  # mv skyflash-gui skyflash && gzip skyflash
+  # mv dist/skyflash.gz final/
+	# ls -lh final/
+
+# notifications (only via telegram)
+notifications:
+  email: true
+
+# make the apps for each OS
+# before_deploy:
+#   - export VERSION="$(git describe --tags --exact-match HEAD 2> /dev/null)"
+#   - ./travis/before_deploy.sh ${TARGETOS} ${VERSION}
+#   - ls -l ./final/
+
+# deploy to Github
+# deploy:
+#   # deploy on linux
+#   - provider: releases
+#     api_key: $OAUTH
+#     file_glob: true
+#     draft: true
+#     overwrite: true
+#     skip_cleanup: true
+#     on:
+#       tags: true
+#     file:
+#       - "final/*"
