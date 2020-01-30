@@ -9,12 +9,12 @@ python:
 
 # install dependencies depending on the particular OS
 install:
-  - sudo pip install PyInstaller
+  - sudo python3.7 -m pip install PyInstaller
 
 # build & test scripts
 script:
-  - sudo pip install .
-  - PyInstaller nanovna-saver.py
+  - sudo python3.7 -m pip install .
+  - python3.7 -m PyInstaller nanovna-saver.py
   - cd dist && ls -lh
   # mv skyflash-gui skyflash && gzip skyflash
   # mv dist/skyflash.gz final/
